@@ -31,7 +31,7 @@ $(function() {
          * in the allFeeds object and ensures it has a URL defined
          * and that the URL is not empty.
          */
-         it('URLS defined', function() {
+         it('urls defined', function() {
             allFeeds.forEach(function (feed) {
                 expect(feed.url).toBeDefined();
                 expect(feed.url.length).not.toBe(0);
@@ -43,7 +43,7 @@ $(function() {
          * and that the name is not empty.
          */
 
-         it('Names defined', function(){
+         it('names defined', function(){
             allFeeds.forEach(function(feed) {
                 expect(feed.name).toBeDefined();
                 expect(feed.name.length).not.toBe(0);
@@ -53,7 +53,7 @@ $(function() {
 
 
     /* TODO: Write a new test suite named "The menu" */
-    describe('The menu', function() {
+    describe('the menu', function() {
 
         /* TODO: Write a test that ensures the menu element is
          * hidden by default. You'll have to analyze the HTML and
@@ -74,8 +74,10 @@ $(function() {
             expect($('body').hasClass('menu-hidden')).toBe(false);
             expect($('body').hasClass('menu-hidden')).toBe(true);
           });
+      });
 
     /* TODO: Write a new test suite named "Initial Entries" */
+    describe('initial Entries', function(){
 
         /* TODO: Write a test that ensures when the loadFeed
          * function is called and completes its work, there is at least
@@ -83,12 +85,20 @@ $(function() {
          * Remember, loadFeed() is asynchronous so this test wil require
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
+         beforeEach(function (done) {
+            loadFeed(0, done);
+         });
+         it('load completed', function () {
+            expect($('.feed').children('.entry-link').children('.entry').length).not.toBe(0);
+         });
 
     /* TODO: Write a new test suite named "New Feed Selection"
+    
 
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
-     });     
+    });     
+         
 }());

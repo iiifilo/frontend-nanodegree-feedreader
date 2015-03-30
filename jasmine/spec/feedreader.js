@@ -69,9 +69,10 @@ $(function() {
           * should have two expectations: does the menu display when
           * clicked and does it hide when clicked again.
           */
-          it('menu changes visibility on clicked', function(){
+          it('menu changes visibility on click', function(){
             $('.menu-icon-link').click();
             expect($('body').hasClass('menu-hidden')).toBe(false);
+            $('.menu-icon-link').click();
             expect($('body').hasClass('menu-hidden')).toBe(true);
           });
       });
@@ -91,14 +92,24 @@ $(function() {
          it('load completed', function () {
             expect($('.feed').children('.entry-link').children('.entry').length).not.toBe(0);
          });
-
-    /* TODO: Write a new test suite named "New Feed Selection"
-    
+   
+    /* TODO: Write a new test suite named "New Feed Selection"*/
+    describe('New Feed Selection', function(){
 
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
-    });     
+         var old = null;
+             beforeEach(function (done) {
+                old = $('.feed').html();
+                loadFeed(1, done);
+             });
+
+             it('content changed', function () {
+                expect($('.feed').html).not.toBe(old);
+             });
+        });  
+    });       
          
 }());

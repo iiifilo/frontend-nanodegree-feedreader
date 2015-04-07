@@ -89,11 +89,14 @@ $(function() {
          beforeEach(function (done) {
             loadFeed(0, done);
          });
+
          it('load completed', function () {
             expect($('.feed').children('.entry-link').children('.entry').length).not.toBe(0);
          });
    
     /* TODO: Write a new test suite named "New Feed Selection"*/
+    
+    }); 
     describe('New Feed Selection', function(){
 
         /* TODO: Write a test that ensures when a new feed is loaded
@@ -109,7 +112,6 @@ $(function() {
              it('content changed', function () {
                 expect($('.feed').html).not.toBe(old);
              });
-        });  
-    });       
+        });        
          
 }());
